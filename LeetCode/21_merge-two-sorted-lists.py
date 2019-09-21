@@ -23,7 +23,7 @@ class ListNode(object):
         print(vals)
 
 
-# clumsy solution
+# recursive solution
 def mergeTwoLists1(l1, l2):
     l3 = ListNode(0)
     
@@ -48,7 +48,7 @@ def mergeTwoLists1(l1, l2):
     return l3.next
     
     
-# elegant solution
+# iterative solution
 def mergeTwoLists2(l1, l2):    
     # initialize the return list (lr is fixed for return, temp will move for merging)
     lr = temp = ListNode(0)
