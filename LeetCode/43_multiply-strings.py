@@ -29,17 +29,12 @@ def multiply(num1, num2):
     out = ''
     carry = 0
     
-    # switch two inputs if needed so that the longer number is always num1
-    if len(num1) < len(num2):
-        temp = num1
-        num1 = num2
-        num2 = temp
-
     # compute len(num2) last digits of the product
     for pos2 in range(len(num2)):
         sum_at_pos2 = carry
         for i in range(pos2+1):
-            sum_at_pos2 += int(num2[-(i+1)]) * int(num1[-(pos2-i+1)])
+            if len(num1) > pos2-i:
+                sum_at_pos2 += int(num2[-(i+1)]) * int(num1[-(pos2-i+1)])
         out = str(sum_at_pos2)[-1] + out
         if sum_at_pos2 >= 10:
             carry = int(str(sum_at_pos2)[:-1])
@@ -109,10 +104,10 @@ def multiply2(num1, num2):
     
     
 if __name__ == '__main__':
-    print('Test 1: 123*456 = '+multiply('123','456'))
-    print('Test 2: 9*9 = '+multiply('9','9'))
-    print('Test 3: 9*99 = '+multiply('9','99'))
-    print('Test 4: 9133*0 = '+multiply('9133','0'))
+    print('Test 1: 123*456 = 56088 -> Output: '+multiply('123','456'))
+    print('Test 2: 9*9 = 81 -> Output: '+multiply('9','9'))
+    print('Test 3: 9*99 = 891 -> Output: '+multiply('9','99'))
+    print('Test 4: 9133*0 = 0 -> Output: '+multiply('9133','0'))
     
     
 
