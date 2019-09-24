@@ -31,13 +31,16 @@ Note:
 """
 
 
-def orangesRotting(grid):
+#####################
+### solution 1 (SLOW)
+#####################
+def orangesRotting1(grid):
     """
     :type grid: List[List[int]]
     :rtype: int
     """
     def rotting_one_minute(grid):
-        new_grid = [row[:] for row in grid]
+        new_grid = [row[:] for row in grid] # copy by slicing (in Python2) (for Python3, subtitute by list() or copy() function)
         Ny = len(grid)
         Nx = len(grid[0])
         for y in range(Ny):
@@ -73,13 +76,57 @@ def orangesRotting(grid):
         # if there are still fresh oranges in the grid, return -1
         else:
             return -1
-        
-        
-    
-if __name__ == '__main__':
-    print('Test 1: {}'.format(orangesRotting([[2,1,1],[1,1,0],[0,1,1]])))
-    print('Test 2: {}'.format(orangesRotting([[2,1,1],[0,1,1],[1,0,1]])))
-    print('Test 3: {}'.format(orangesRotting([[0,2]])))
-    
 
+
+########################
+### solution 2 (QUICKER)
+########################
+def orangesRotting2(grid):
+    """
+    :type grid: List[List[int]]
+    :rtype: int
+    """
+    minute = 0
+    fresh, rotten = set(), set()
+    
+    # initial fresh and rotten set 
+    Ny, Nx = len(grid), len(grid[0])
+    for y in range(Ny):
+        for x in range(Nx):
+            if grid[y][x]==1:
+                fresh.add((y,x))
+            elif grid[y][x]==2:
+                rotten.add((y,x))
+    
+    # if there are already no fresh oranges at minute 0, the answer is just 0
+    while fresh:
+        rotten_new = set()
+        
+        # after one minute rotting
+        for (y,x) in rotten:
+            rotten_new.add((y,x))
+            for dy,dx in [(0,-1), (0,+1), (-1,0), (+1,0)]:
+                 if (y+dy,x+dx) in fresh:
+                     fresh.remove((y+dy,x+dx))
+                     rotten_new.add((y+dy,x+dx))
+        
+        # if the rotting hasn't end, repeat the process 
+        if rotten_new != rotten:
+            rotten = rotten_new            
+            minute += 1
+        # if the rotting ends and there are still fresh oranges in the grid, return -1
+        elif fresh:
+                return -1
+    
+    # if there are no fresh oranges left, return minute
+    return minute
+
+                
+            
+   
+if __name__ == '__main__':
+    print('Test 1: {}'.format(orangesRotting2([[2,1,1],[1,1,0],[0,1,1]])))
+    print('Test 2: {}'.format(orangesRotting2([[2,1,1],[0,1,1],[1,0,1]])))
+    print('Test 3: {}'.format(orangesRotting2([[0,2]])))
+    
 
