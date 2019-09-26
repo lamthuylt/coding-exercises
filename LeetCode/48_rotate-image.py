@@ -47,7 +47,7 @@ def rotate(matrix):
     """
     n = len(matrix)
         
-    # diagonale flip (axe = top left to bottom right) 
+    # diagonal flip (axe = top left to bottom right) 
     for y in range(n):
         for x in range(y):
             temp = matrix[y][x] 
