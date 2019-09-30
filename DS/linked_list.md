@@ -11,7 +11,7 @@ Operations that can be performed on singly linked lists include insertion, delet
 
 <figure class="image">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt="{{ include description }}">
-  Figure 1 - A linked list whose nodes contain 2 fields: a value and a reference to the next node. The last node is linked to NULL, signifying the end of the list. ([source](https://en.wikipedia.org/wiki/File:Singly-linked-list.svg))
+  Figure 1 - A linked list whose nodes contain 2 fields: a value and a reference to the next node. The last node is linked to NULL, signifying the end of the list.
 </figure>
 
 #### Implementation
