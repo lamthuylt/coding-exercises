@@ -2,6 +2,9 @@ This repository contains my implementation of data structures, algorithms, and m
 
 Written in Python.
 
+## Data structures
+
+### [Linked list](DS/linked_list.md)
 
 ## Algorithms
 
