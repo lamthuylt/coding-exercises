@@ -2,7 +2,7 @@
 
 A linked list consists of nodes, where each node contains a data field and a reference (link) to the next node of the list.
 
-## Singly linked list
+### Singly linked list
 #### Description
 Singly linked lists contain nodes which have:
 * a data field 
