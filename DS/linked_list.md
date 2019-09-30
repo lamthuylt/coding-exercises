@@ -6,7 +6,7 @@ A linked list consists of nodes, where each node contains a data field and a ref
 #### Description
 Singly linked lists contain nodes which have:
 * a data field 
-* 'next' field, which points to the next node in line of nodes.
+* 'next' field, which points to the next node in line of nodes.\
 Operations that can be performed on singly linked lists include insertion, deletion and traversal.
 
 <figure class="image">
