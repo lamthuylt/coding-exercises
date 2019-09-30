@@ -1,12 +1,10 @@
 # Linked list
 
 A linked list consists of nodes, where each node contains a data field and a reference (link) to the next node of the list.
-
 <figure class="image">
-  <img src="https://images.app.goo.gl/WCEXVPxRRUhGehRKA" alt="{{ include description }}">
-  (source: https://www.geeksforgeeks.org/data-structures/linked-list/)
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt="{{ include description }}">
+  (source: https://en.wikipedia.org/wiki/File:Singly-linked-list.svg)
 </figure>
-
 
 ## Singly linked list
 Singly linked lists contain nodes which have:
