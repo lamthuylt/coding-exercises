@@ -74,7 +74,7 @@ def hasCycle2(head):
     Intuition: Imagine two runners running on a track at different speed. 
     What happens when the track is actually a circle?
     """
-        # if the list have less than 3 nodes, it doesn't contain any cycle
+    # if the list have at most 2 nodes and the last node doesn't point to the first node, return False
     if head==None or head.next==None or head.next.next==None:
         return False
     else:
