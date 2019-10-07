@@ -33,15 +33,15 @@ class ListNode(object):
 
 
 ##########################
-# Solution 1 
+# Solution 1 : Hash Table
 # Space complexity: O(n))
 ##########################
-def hasCycle(head):
+def hasCycle1(head):
     """
     :type head: ListNode
     :rtype: bool
+    Intuition: we check whether a node had been visited before using hash table
     """
-    # we use a hash table to check whether a node has been visited before
     visited = {}
 
     if head==None:
@@ -58,9 +58,42 @@ def hasCycle(head):
                 visited[node] = pos
                 node = node.next
                 pos += 1
-        # if the current node is none, we have reached the end of the list and it must not be cyclic
+        # if the current node is None, we have reached the end of the list and it must not be cyclic
         return False
+    
+    
+    
+############################
+# Solution 2 : Two Pointers
+# Space complexity: O(1))
+############################
+def hasCycle2(head):
+    """
+    :type head: ListNode
+    :rtype: bool
+    Intuition: Imagine two runners running on a track at different speed. 
+    What happens when the track is actually a circle?
+    """
+        # if the list have less than 3 nodes, it doesn't contain any cycle
+    if head==None or head.next==None or head.next.next==None:
+        return False
+    else:
+        # consider a slow pointer and a fast pointer, which increment one and two steps respectively on the track
+        slow = head
+        fast = head.next.next
+        while fast != None:
+            # if the fast pointer meets the slow pointer after a certain iteration, the list contains a circle
+            if slow == fast:
+                return True
+            slow = slow.next
+            # if the current node is None, we have reached the end of the list and it must not be cyclic
+            if fast.next==None or fast.next.next==None:
+                return False
+            else:
+                fast = fast.next.next
         
+        
+    
         
 if __name__ == '__main__':
     # example 1    
@@ -72,17 +105,20 @@ if __name__ == '__main__':
     node1.next = node2
     node2.next = node3
     node3.next = node1
-    print(hasCycle(head1))
+    print(hasCycle1(head1))
+    print(hasCycle2(head1))
     
     # example 2
     head2 = ListNode(1)
     node1 = ListNode(2)
     head2.next = node1
     node1.next = head2
-    print(hasCycle(head2))
+    print(hasCycle1(head2))    
+    print(hasCycle2(head2))
     
     # example 2
     head3 = ListNode(1)
-    print(hasCycle(head3))
+    print(hasCycle1(head3))
+    print(hasCycle2(head3))
     
-            
+    head = None
